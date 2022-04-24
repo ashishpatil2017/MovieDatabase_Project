@@ -1,0 +1,56 @@
+//Create Queries
+
+//Create actor table query
+create table actor 
+(id int,
+firstname varchar(50),
+lastname varchar(50),
+gender char(1),
+primary key(id));
+
+//create movie table query 
+create table movie 
+(id int,
+name varchar(50),
+year int,
+rankscore float,
+primary key(id))
+
+//create director table query 
+create table director 
+(id int,
+firstname varchar(50),
+lastname varchar(50),
+primary key(id));
+
+//create table roles query
+create table role(
+actorid int,
+movieid int,
+role varchar(50),
+primary key(actorid,movieid),
+foreign key(actorid) references actor(id),
+foreign key(movieid) references movie(id));
+
+//create table movie_genres query
+create table movie_genres 
+(movieid int,
+genre varchar(50),
+primary key(movieid,genre),
+foreign key(movieid) references movie(id));
+
+//create table movie_director
+create table movie_director
+(directorid int,
+movieid int,
+primary key(directorid,movieid),
+foreign key(directorid) references director(id),
+foreign key(movieid) references movie(id));
+
+//create table director_genre
+create table director_genre
+(directorid int,
+genre varchar(50),
+prob float,
+primary key(directorid,genre),
+foreign key(directorid) references director(id));
