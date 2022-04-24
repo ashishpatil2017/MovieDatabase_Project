@@ -1,0 +1,12 @@
+//***********************QUERY 01 ******************************************
+//This query is to get the genre of all the movies. As of now i am getting only top 10 genres of the movies
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `MovieGenre`()
+BEGIN 
+	select m.name, g.genre from movie m JOIN movie_genres g on m.id = g.movieid limit 10;
+END$$
+DELIMITER ;
+
+call MovieGenre();
