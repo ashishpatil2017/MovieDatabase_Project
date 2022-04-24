@@ -1,0 +1,16 @@
+
+--*******************************QUERY 02 *******************************************
+-- here the query takes actor name and year as input and shows all the movies of that actor in that perticular year
+--In the below query we are showing movie name done by actor yash in year 2022
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Movie_By_ActorANDYEAR`()
+BEGIN 
+	select m.name 
+	from actor a join role r on a.id = r.actorid join movie m on m.id = r.movieid 
+    where a.firstname = 'yash' and m.year = '2022';
+END$$
+DELIMITER ;
+
+call Movie_By_ActorANDYEAR();
+

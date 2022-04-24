@@ -1,0 +1,15 @@
+---********************************Function Query 03***********************************
+--Below is a function defined with name MovieInYear. It takes year as a input and gives number of movies done in that year
+--Below finction taking 2022 as year input and giving 1 as output since only one movie is present in the dataset
+
+delimiter $$
+CREATE FUNCTION MoviesInAYear(yearNumber INT)
+RETURNS INT DETERMINISTIC
+BEGIN
+DECLARE NumberMovies INT;
+select count(*) into NumberofMovies
+from movie m where m.year = yearNumber;
+RETURN NumberMovies;
+END$$
+
+select MoviesInAYear(2022);
