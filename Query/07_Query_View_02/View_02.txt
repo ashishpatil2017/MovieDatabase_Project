@@ -1,0 +1,11 @@
+---*******************************View 02 *******************************************
+---Below we created a view called GenreForDirector, It creates a virtual table which has director details in descending order of the probablity of doing specific genre
+---In below example, We are showing directors who did most movies in action with prob values in descending order
+
+CREATE VIEW GenreForDirector AS
+select d.firstname,d.lastname,dg.genre,dg.prob
+from director d join director_genre dg on d.id = dg.directorid 
+where dg.genre = 'action' order by prob desc
+
+
+select * from GenreForDirector;

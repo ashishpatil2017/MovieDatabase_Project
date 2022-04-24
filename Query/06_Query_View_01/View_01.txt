@@ -1,0 +1,11 @@
+---*************************VIEW 01 *******************************8
+---Below we created a view which gives Good actor information 
+---Here we are defining a actor as good only if he/she has rankscore greater than 8
+
+
+CREATE VIEW GoodActor AS
+select firstname,lastname,avg(rankscore) average_rank
+from actor a join role r on a.id = r.actorid join movie m on m.id = r.movieid 
+group by actorid having average_rank > 8 limit 10
+
+select * from GoodActor;

@@ -1,0 +1,14 @@
+---***************************Trigger 01 ***************************************
+---This below trigger triggers when you delete data from movie table 
+--Whenerever you delete some data from movie table, it deletes data from all releted data in different table about this movie
+
+delimiter |
+create trigger DeleteDataReletedToMovie BEFORE DELETE ON movie
+for each row 
+begin 
+delete from role where movie_id = old.id;
+delete from movie_genre where movieid = old.id;
+delete from movie_director where movieid = old.id;
+end;
+
+delete from movie where name = 'movie_name'
