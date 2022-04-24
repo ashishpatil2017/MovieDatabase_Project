@@ -1,0 +1,17 @@
+---*********************************QUERY 04 *********************************
+---Below is XML with appropriate elements from relations database
+---It shows XML output for actor info in a specific movies
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActorDetailInXML`()
+BEGIN 
+	select concat(
+	'<Cast>',
+	group_concat('<Actors>' ' <First Name> ', a.firstname , '</First Name>' ' <Last Name> ', a.lastname , 
+    '</Last Name>' ' <Role> ', r.role , '</Role>' '</Actors>' separator ''),
+    '</Cast>') as xmldoc from actor a join role r on a.id = r.actorid join movie m on m.id = r.movieid 
+	where m.name = 'kgf2';
+END$$
+DELIMITER ;
+
+call ActorDetailInXML()
