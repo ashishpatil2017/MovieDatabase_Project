@@ -1,0 +1,15 @@
+---*******************************Insert Query*******************************************
+---Below we created a procedure called InsertMovie(). It inserts data into movie table. It taks id, name of the movie and year and rankscore of the movie as input.
+---Below example i am calling stored procedure using call InsertMovie() and showing the inserted data using select query
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertMovie`()
+BEGIN 
+    insert into movie(id,name,year,rankscore) values(2,'kgf1',2018,8.5);
+END$$
+DELIMITER ;
+
+
+call InsertMovie();
+
+select * from movie;

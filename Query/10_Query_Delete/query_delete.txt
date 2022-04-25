@@ -1,0 +1,15 @@
+---*******************************Delete Query*******************************************
+---below we created a stored procedure for delete operation. Here using below stored procedure we are deleting a movie from database.Given id , we are deleting the movie details
+---example : In the below procedure we are deleting the movie where id is 2
+---and after that calling that stored procedure and verifying the delete is succesffuly or not
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteMovie`()
+BEGIN
+    delete from movie where id = 2;
+END$$
+DELIMITER ;
+
+call DeleteMovie()
+
+select * from movie;

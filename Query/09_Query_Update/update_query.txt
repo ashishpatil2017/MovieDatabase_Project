@@ -1,0 +1,15 @@
+---*******************************Insert Query*******************************************
+---Below is the UpdateMovieDetail Procedure. It updates the movie detail, and we can edit the query flexibly the way we want. After that we are simply calling the sql query to 
+---execute the stored procedure. and we are showing the update using select query 
+---Example : In below example, we are updating name of the movie from kgf1 to kolar gold filed 1
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateMovieDetail`()
+BEGIN 
+    update movie set name = 'kolar gold field 1' where id = 2;
+END$$
+DELIMITER ;
+
+call UpdateMovieDetail()
+
+select * from movie;
