@@ -1,0 +1,14 @@
+---*******************************Query : Group by Having*******************************************
+---Below query demonstrate group by having operation.
+---In the below stored procedure we are showing actor details who did more than one movie in a specific year 
+---Example : in the below example we are showing actor details we did more than one movie in year 2018
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Actor_Doing_MoreThanOne_Movie_InYear`()
+BEGIN
+    select * from actor where id in (select r.actorid from role r JOIN movie m on r.movieid = m.id where m.year = 2018 group by r.actorid having count(*) > 1);
+END$$
+DELIMITER ;
+
+call Actor_Doing_MoreThanOne_Movie_InYear();
+
